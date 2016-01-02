@@ -5,7 +5,7 @@ MarsDB-Angular
 [![npm version](https://badge.fury.io/js/marsdb-angular.svg)](https://www.npmjs.com/package/marsdb-angular)
 [![Dependency Status](https://david-dm.org/c58/marsdb-angular.svg)](https://david-dm.org/c58/marsdb-angular)
 
-MarsDB-Angular is an AngularJS 1.x binding for MarsDB. It makes easy to use MarsDB in an angular application by automatically wrap all returned promises with `$q` and destroy observers on $scope's `$destroy` event.
+MarsDB-Angular is an AngularJS 1.x binding for [MarsDB](https://github.com/c58/marsdb). It makes easy to use [MarsDB](https://github.com/c58/marsdb) in an angular application by automatically wrap all returned promises with `$q` and destroy observers on $scope's `$destroy` event.
 
 ## Examples
 Include `marsdb.angular.js` after `marsdb.min.js` and `angular.js` in your `<head>`. Then add a `MarsDB` dependency in your module. That's it. Now you can use `$collection` factory. For example:
