@@ -8,7 +8,5 @@ install:
 
 node_js:
   - "5.3"
-  - "4.2"
-  - "0.12"
 
 script: npm run test_browser
