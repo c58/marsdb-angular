@@ -3,7 +3,6 @@ MarsDB-Angular
 
 [![Build Status](https://travis-ci.org/c58/marsdb-angular.svg?branch=master)](https://travis-ci.org/c58/marsdb-angular)
 [![npm version](https://badge.fury.io/js/marsdb-angular.svg)](https://www.npmjs.com/package/marsdb-angular)
-[![Coverage Status](https://coveralls.io/repos/c58/marsdb-angular/badge.svg?branch=master&service=github)](https://coveralls.io/github/c58/marsdb-angular?branch=master)
 [![Dependency Status](https://david-dm.org/c58/marsdb-angular.svg)](https://david-dm.org/c58/marsdb-angular)
 
 MarsDB-Angular is an AngularJS 1.x binding for MarsDB. It makes easy to use MarsDB in an angular application by automatically wrap all returned promises with `$q` and destroy observers on $scope's `$destroy` event.
