@@ -31,7 +31,7 @@ angular.module(‘app’, [‘MarsDB’])
 	});
 ```
 
-You also can use MarsDB within browserify environment. Just `require(‘marsdb/dist/angular’)` and MarsDB module will be added to the angular. Angular must be defined in a `window` or must be available as a module `require(‘angular’)`.
+You also can use MarsDB within browserify environment. Just `require(‘marsdb-angular’)` and MarsDB module will be added to the angular. Angular must be defined in a `window` or must be available as a module `require(‘angular’)`.
 
 ## Contributing
 I’m waiting for your pull requests and issues.
