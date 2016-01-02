@@ -1,0 +1,38 @@
+{
+  "name": "marsdb-angular",
+  "description": "MarsDB-Angular is an AngularJS 1.x binding for MarsDB",
+  "main": "index.js",
+  "authors": [
+    "Artem Artemev"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "marsdb",
+    "database",
+    "datastore",
+    "embedded",
+    "angular",
+    "linvodb3",
+    "nedb",
+    "mongo",
+    "minimongo",
+    "meteor"
+  ],
+  "homepage": "https://github.com/c58/marsdb-angular",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:c58/marsdb-angular.git"
+  },
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
