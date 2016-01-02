@@ -1,10 +1,7 @@
 {
   "name": "marsdb-anglar",
-  "version": "0.0.1",
-  "author": {
-    "name": "Artem Artemev",
-    "email": "art@studytime.me"
-  },
+  "version": "0.0.2",
+  "author": "Artem Artemev <art@studytime.me>",
   "contributors": [
     "Artem Artemev"
   ],
@@ -24,7 +21,7 @@
   "homepage": "https://github.com/c58/marsdb-angular",
   "repository": {
     "type": "git",
-    "url": "git@github.com:c58/marsdb-angular.git"
+    "url": "git+ssh://git@github.com/c58/marsdb-angular.git"
   },
   "dependencies": {
     "core-js": "^2.0.1",
@@ -68,9 +65,16 @@
     "test_some": "mocha --require babelhook --reporter spec --timeout 1000",
     "test_browser": "gulp build:browser:tests && mocha-phantomjs --reporter spec browser_tests.html",
     "test": "mocha --require babelhook --reporter spec --timeout 1000 test/both test/node",
-    "coverage": "./node_modules/.bin/babel-node ./node_modules/istanbul/lib/cli cover _mocha test/both test/node -- -u exports -R spec && open coverage/lcov-report/index.html",
-    "coveralls": "./node_modules/.bin/babel-node ./node_modules/istanbul/lib/cli cover _mocha test/both test/node --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js ./lib && rm -rf ./coverage"
+    "coverage": "babel-node ./node_modules/istanbul/lib/cli cover _mocha test/both test/node -- -u exports -R spec && open coverage/lcov-report/index.html",
+    "coveralls": "babel-node ./node_modules/istanbul/lib/cli cover _mocha test/both test/node --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js ./lib && rm -rf ./coverage"
   },
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/c58/marsdb-angular/issues"
+  },
+  "directories": {
+    "example": "example",
+    "test": "test"
+  }
 }
