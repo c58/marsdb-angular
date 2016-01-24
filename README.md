@@ -8,11 +8,11 @@ MarsDB-Angular
 MarsDB-Angular is an AngularJS 1.x binding for [MarsDB](https://github.com/c58/marsdb). It makes easy to use [MarsDB](https://github.com/c58/marsdb) in an angular application by automatically wrap all returned promises with `$q` and destroy observers on $scope's `$destroy` event.
 
 ## Examples
-Include `marsdb.angular.js` after `marsdb.min.js` and `angular.js` in your `<head>`. Then add a `MarsDB` dependency in your module. That's it. Now you can use `$collection` factory. For example:
+Include `marsdb.angular.js` after `marsdb.min.js` and `angular.js` in your `<head>`. Also don't forget to include `marsdb.polyfills.js`. Then add a `MarsDB` dependency in your module. That's it. Now you can use `$collection` factory. For example:
 ```javascript
 angular.module(‘app’, [‘MarsDB’])
 	.controller(function($scope, $collection) {
-    // Each call for a `$collection(...)` automatically
+		// Each call for a `$collection(...)` automatically
     // creates new collection if it is not exists
 		const posts = $collection(‘posts’);
 
@@ -30,6 +30,8 @@ angular.module(‘app’, [‘MarsDB’])
 		// don’t pass last argument.
 	});
 ```
+
+All included storage implementations is available in a `Mars.Storages` global variable. You can set different default storage by `$collectionProvider.defaultStorageManager(Mars.Storages.LocalForage)`.
 
 You also can use MarsDB within browserify environment. Just `require(‘marsdb-angular’)` and MarsDB module will be added to the angular. Angular must be defined in a `window` or must be available as a module `require(‘angular’)`.
 
