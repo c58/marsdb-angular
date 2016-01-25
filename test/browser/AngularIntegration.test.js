@@ -45,6 +45,7 @@ describe('AngularIntegration', () => {
             done();
           }
         }, $scope).then(() => {
+          console.log('asdas');
           coll.insert({_id: 1, a: 2});
           setTimeout(() => $rootScope.$apply(), 100);
         })
