@@ -188,15 +188,15 @@ var AngularCursorObservable = exports.AngularCursorObservable = (function (_Curs
       return this.$q.resolve((_get2 = _get(Object.getPrototypeOf(AngularCursorObservable.prototype), 'exec', this)).call.apply(_get2, [this].concat(args)));
     }
   }, {
-    key: 'ids',
-    value: function ids() {
+    key: 'then',
+    value: function then() {
       var _get3;
 
       for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
         args[_key2] = arguments[_key2];
       }
 
-      return this.$q.resolve((_get3 = _get(Object.getPrototypeOf(AngularCursorObservable.prototype), 'ids', this)).call.apply(_get3, [this].concat(args)));
+      return this.$q.resolve((_get3 = _get(Object.getPrototypeOf(AngularCursorObservable.prototype), 'then', this)).call.apply(_get3, [this].concat(args)));
     }
   }, {
     key: 'update',
