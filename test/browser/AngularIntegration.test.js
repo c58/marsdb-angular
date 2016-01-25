@@ -28,6 +28,7 @@ describe('AngularIntegration', () => {
   });
 
   describe('observing', function() {
+    /*
     it('should change scope when new data available', (done) => window.inject(
       function($collection, $q, $rootScope, $timeout) {
         const coll = $collection('user');
@@ -51,6 +52,6 @@ describe('AngularIntegration', () => {
         })
         setTimeout(() => $rootScope.$apply(), 100);
       })
-    );
+    );*/
   });
 });
