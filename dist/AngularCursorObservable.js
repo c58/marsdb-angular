@@ -104,16 +104,6 @@ var AngularCursorObservable = exports.AngularCursorObservable = (function (_Curs
 
       return this.$q.resolve((_get4 = _get(Object.getPrototypeOf(AngularCursorObservable.prototype), 'update', this)).call.apply(_get4, [this].concat(args)));
     }
-  }, {
-    key: '_prepareListener',
-    value: function _prepareListener(listener) {
-      var _this2 = this;
-
-      var preparedFn = _get(Object.getPrototypeOf(AngularCursorObservable.prototype), '_prepareListener', this).call(this, listener);
-      return function () {
-        return _this2.$q.resolve(preparedFn.apply(undefined, arguments)).then(function () {});
-      };
-    }
   }]);
 
   return AngularCursorObservable;

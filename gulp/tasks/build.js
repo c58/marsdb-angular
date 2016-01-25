@@ -71,6 +71,7 @@ gulp.task('build:browser', ['build:node'], function() {
 
   return browserify(customOpts)
     .exclude('marsdb')
+    .exclude('crypto')
     .exclude('angular')
     .bundle()
     .pipe(source(config.browser.bundleName))

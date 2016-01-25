@@ -38,39 +38,32 @@ var AngularCollection = exports.AngularCollection = (function () {
   }
 
   _createClass(AngularCollection, [{
-    key: 'ensureIndex',
-    value: function ensureIndex() {
-      var _collection;
-
-      return this.$q.resolve((_collection = this._collection).ensureIndex.apply(_collection, arguments));
-    }
-  }, {
     key: 'insert',
     value: function insert() {
-      var _collection2;
+      var _collection;
 
-      return this.$q.resolve((_collection2 = this._collection).insert.apply(_collection2, arguments));
+      return this.$q.resolve((_collection = this._collection).insert.apply(_collection, arguments));
     }
   }, {
     key: 'insertAll',
     value: function insertAll() {
-      var _collection3;
+      var _collection2;
 
-      return this.$q.resolve((_collection3 = this._collection).insertAll.apply(_collection3, arguments));
+      return this.$q.resolve((_collection2 = this._collection).insertAll.apply(_collection2, arguments));
     }
   }, {
     key: 'update',
     value: function update() {
-      var _collection4;
+      var _collection3;
 
-      return this.$q.resolve((_collection4 = this._collection).update.apply(_collection4, arguments));
+      return this.$q.resolve((_collection3 = this._collection).update.apply(_collection3, arguments));
     }
   }, {
     key: 'remove',
     value: function remove() {
-      var _collection5;
+      var _collection4;
 
-      return this.$q.resolve((_collection5 = this._collection).remove.apply(_collection5, arguments));
+      return this.$q.resolve((_collection4 = this._collection).remove.apply(_collection4, arguments));
     }
   }, {
     key: 'find',
@@ -80,23 +73,23 @@ var AngularCollection = exports.AngularCollection = (function () {
   }, {
     key: 'findOne',
     value: function findOne() {
-      var _collection6;
+      var _collection5;
 
-      return this.$q.resolve((_collection6 = this._collection).findOne.apply(_collection6, arguments));
+      return this.$q.resolve((_collection5 = this._collection).findOne.apply(_collection5, arguments));
     }
   }, {
     key: 'count',
     value: function count() {
-      var _collection7;
+      var _collection6;
 
-      return this.$q.resolve((_collection7 = this._collection).count.apply(_collection7, arguments));
+      return this.$q.resolve((_collection6 = this._collection).count.apply(_collection6, arguments));
     }
   }, {
     key: 'ids',
     value: function ids() {
-      var _collection8;
+      var _collection7;
 
-      return this.$q.resolve((_collection8 = this._collection).ids.apply(_collection8, arguments));
+      return this.$q.resolve((_collection7 = this._collection).ids.apply(_collection7, arguments));
     }
   }, {
     key: 'modelName',
@@ -215,16 +208,6 @@ var AngularCursorObservable = exports.AngularCursorObservable = (function (_Curs
       }
 
       return this.$q.resolve((_get4 = _get(Object.getPrototypeOf(AngularCursorObservable.prototype), 'update', this)).call.apply(_get4, [this].concat(args)));
-    }
-  }, {
-    key: '_prepareListener',
-    value: function _prepareListener(listener) {
-      var _this2 = this;
-
-      var preparedFn = _get(Object.getPrototypeOf(AngularCursorObservable.prototype), '_prepareListener', this).call(this, listener);
-      return function () {
-        return _this2.$q.resolve(preparedFn.apply(undefined, arguments)).then(function () {});
-      };
     }
   }]);
 
