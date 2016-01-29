@@ -24,13 +24,12 @@
     "url": "git+ssh://git@github.com/c58/marsdb-angular.git"
   },
   "dependencies": {
-    "marsdb": "^0.5.10",
-    "invariant": "^2.2.0"
+    "invariant": "^2.2.0",
+    "marsdb": "^0.5.14"
   },
   "devDependencies": {
-    "core-js": "^2.0.1",
-    "angular": "^1.4.8",
-    "angular-mocks": "^1.4.8",
+    "angular": "^1.4.9",
+    "angular-mocks": "^1.4.9",
     "babel-cli": "^6.3.17",
     "babel-eslint": "^5.0.0-beta6",
     "babel-preset-es2015": "^6.3.13",
@@ -42,6 +41,7 @@
     "bulkify": "^1.1.1",
     "chai": "^3.4.1",
     "chai-as-promised": "^5.2.0",
+    "core-js": "^2.0.1",
     "coveralls": "^2.11.6",
     "del": "^2.2.0",
     "envify": "^3.4.0",

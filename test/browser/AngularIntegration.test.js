@@ -28,7 +28,6 @@ describe('AngularIntegration', () => {
   });
 
   describe('observing', function() {
-    /*
     it('should change scope when new data available', (done) => window.inject(
       function($collection, $q, $rootScope, $timeout) {
         const coll = $collection('user');
@@ -46,12 +45,11 @@ describe('AngularIntegration', () => {
             done();
           }
         }, $scope).then(() => {
-          console.log('asdas');
           coll.insert({_id: 1, a: 2});
           setTimeout(() => $rootScope.$apply(), 100);
         })
         setTimeout(() => $rootScope.$apply(), 100);
       })
-    );*/
+    );
   });
 });
