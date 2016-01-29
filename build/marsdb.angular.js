@@ -3,10 +3,12 @@
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.AngularCollection = undefined;
+exports.createCollectionDelegate = createCollectionDelegate;
 
 var _AngularCursorObservable = require('./AngularCursorObservable');
 
@@ -16,92 +18,82 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 var Collection = typeof window !== 'undefined' && window.Mars ? window.Mars.Collection : require('marsdb').Collection;
 
-/**
- * Collection that just delegate all methods to an
- * original Collection and wrapps all returned promises
- * with angular's $q.
- *
- * It's not extending an original Collection for
- * safity porpuse. But if you really wants to access
- * storage or indexes, use a '_collcetion' field
- * of the object.
- */
+function createCollectionDelegate() {
+  // Build new delegate upon current default
+  var _defaultDelegate = Collection.defaultDelegate();
 
-var AngularCollection = exports.AngularCollection = (function () {
-  function AngularCollection(name, options, $q) {
-    _classCallCheck(this, AngularCollection);
+  /**
+   * CollectionDelegate that just wraps methods with $q
+   * promises and uses special AngularCursorObservable
+   * for finds.
+   */
 
-    this.$q = $q;
-    this._collection = new Collection(name, options);
-  }
+  var AngularCollectionDelegate = (function (_defaultDelegate2) {
+    _inherits(AngularCollectionDelegate, _defaultDelegate2);
 
-  _createClass(AngularCollection, [{
-    key: 'insert',
-    value: function insert() {
-      var _collection;
+    function AngularCollectionDelegate(db, options) {
+      _classCallCheck(this, AngularCollectionDelegate);
 
-      return this.$q.resolve((_collection = this._collection).insert.apply(_collection, arguments));
+      var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AngularCollectionDelegate).call(this, db, options));
+
+      _this.db = db;
+      _this.$q = options._$q;
+      return _this;
     }
-  }, {
-    key: 'insertAll',
-    value: function insertAll() {
-      var _collection2;
 
-      return this.$q.resolve((_collection2 = this._collection).insertAll.apply(_collection2, arguments));
-    }
-  }, {
-    key: 'update',
-    value: function update() {
-      var _collection3;
+    _createClass(AngularCollectionDelegate, [{
+      key: 'insert',
+      value: function insert() {
+        var _get2;
 
-      return this.$q.resolve((_collection3 = this._collection).update.apply(_collection3, arguments));
-    }
-  }, {
-    key: 'remove',
-    value: function remove() {
-      var _collection4;
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+          args[_key] = arguments[_key];
+        }
 
-      return this.$q.resolve((_collection4 = this._collection).remove.apply(_collection4, arguments));
-    }
-  }, {
-    key: 'find',
-    value: function find(query) {
-      return new _AngularCursorObservable2.default(this, query);
-    }
-  }, {
-    key: 'findOne',
-    value: function findOne() {
-      var _collection5;
+        return this.$q.resolve((_get2 = _get(Object.getPrototypeOf(AngularCollectionDelegate.prototype), 'insert', this)).call.apply(_get2, [this].concat(args)));
+      }
+    }, {
+      key: 'remove',
+      value: function remove() {
+        var _get3;
 
-      return this.$q.resolve((_collection5 = this._collection).findOne.apply(_collection5, arguments));
-    }
-  }, {
-    key: 'count',
-    value: function count() {
-      var _collection6;
+        for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+          args[_key2] = arguments[_key2];
+        }
 
-      return this.$q.resolve((_collection6 = this._collection).count.apply(_collection6, arguments));
-    }
-  }, {
-    key: 'ids',
-    value: function ids() {
-      var _collection7;
+        return this.$q.resolve((_get3 = _get(Object.getPrototypeOf(AngularCollectionDelegate.prototype), 'remove', this)).call.apply(_get3, [this].concat(args)));
+      }
+    }, {
+      key: 'update',
+      value: function update() {
+        var _get4;
 
-      return this.$q.resolve((_collection7 = this._collection).ids.apply(_collection7, arguments));
-    }
-  }, {
-    key: 'modelName',
-    get: function get() {
-      return this._collection.modelName;
-    }
-  }]);
+        for (var _len3 = arguments.length, args = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+          args[_key3] = arguments[_key3];
+        }
 
-  return AngularCollection;
-})();
+        return this.$q.resolve((_get4 = _get(Object.getPrototypeOf(AngularCollectionDelegate.prototype), 'update', this)).call.apply(_get4, [this].concat(args)));
+      }
+    }, {
+      key: 'find',
+      value: function find(query) {
+        var options = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
 
-exports.default = AngularCollection;
+        return new _AngularCursorObservable2.default(this.$q, this.db, query, options);
+      }
+    }]);
+
+    return AngularCollectionDelegate;
+  })(_defaultDelegate);
+
+  return AngularCollectionDelegate;
+}
 },{"./AngularCursorObservable":2,"marsdb":undefined}],2:[function(require,module,exports){
 'use strict';
 
@@ -124,12 +116,18 @@ var CursorObservable = typeof window !== 'undefined' && window.Mars ? window.Mar
 var AngularCursorObservable = exports.AngularCursorObservable = (function (_CursorObservable) {
   _inherits(AngularCursorObservable, _CursorObservable);
 
-  function AngularCursorObservable(db, query) {
+  function AngularCursorObservable($q) {
+    var _Object$getPrototypeO;
+
     _classCallCheck(this, AngularCursorObservable);
 
-    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AngularCursorObservable).call(this, db._collection, query));
+    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
 
-    _this.$q = db.$q;
+    var _this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(AngularCursorObservable)).call.apply(_Object$getPrototypeO, [this].concat(args)));
+
+    _this.$q = $q;
     return _this;
   }
 
@@ -146,10 +144,8 @@ var AngularCursorObservable = exports.AngularCursorObservable = (function (_Curs
   _createClass(AngularCursorObservable, [{
     key: 'destroy',
     value: function destroy(cursor) {
-      if (cursor && cursor._prevStopper) {
-        cursor._prevStopper.stop();
-      }
-      return this;
+      console.warn('DEPRECATED: `destroy` of cursor is deprecated! use `stopObservers` instead');
+      return this.stopObservers();
     }
 
     /**
@@ -172,42 +168,29 @@ var AngularCursorObservable = exports.AngularCursorObservable = (function (_Curs
           stopper.stop();
         });
       }
-
-      this._prevStopper = stopper;
       return stopper;
     }
   }, {
-    key: 'exec',
-    value: function exec() {
+    key: '_doUpdate',
+    value: function _doUpdate() {
       var _get2;
 
-      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
+      for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        args[_key2] = arguments[_key2];
       }
 
-      return this.$q.resolve((_get2 = _get(Object.getPrototypeOf(AngularCursorObservable.prototype), 'exec', this)).call.apply(_get2, [this].concat(args)));
+      return this.$q.resolve((_get2 = _get(Object.getPrototypeOf(AngularCursorObservable.prototype), '_doUpdate', this)).call.apply(_get2, [this].concat(args)));
     }
   }, {
     key: 'then',
     value: function then() {
       var _get3;
 
-      for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-        args[_key2] = arguments[_key2];
-      }
-
-      return this.$q.resolve((_get3 = _get(Object.getPrototypeOf(AngularCursorObservable.prototype), 'then', this)).call.apply(_get3, [this].concat(args)));
-    }
-  }, {
-    key: 'update',
-    value: function update() {
-      var _get4;
-
       for (var _len3 = arguments.length, args = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
         args[_key3] = arguments[_key3];
       }
 
-      return this.$q.resolve((_get4 = _get(Object.getPrototypeOf(AngularCursorObservable.prototype), 'update', this)).call.apply(_get4, [this].concat(args)));
+      return this.$q.resolve((_get3 = _get(Object.getPrototypeOf(AngularCursorObservable.prototype), 'then', this)).call.apply(_get3, [this].concat(args)));
     }
   }]);
 
@@ -218,17 +201,20 @@ exports.default = AngularCursorObservable;
 },{"marsdb":undefined}],3:[function(require,module,exports){
 'use strict';
 
-var _AngularCollection = require('./AngularCollection');
-
-var _AngularCollection2 = _interopRequireDefault(_AngularCollection);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _AngularCollectionDelegate = require('./AngularCollectionDelegate');
 
 var angular = typeof window !== 'undefined' && window.angular ? window.angular : require('angular');
 var Collection = typeof window !== 'undefined' && window.Mars ? window.Mars.Collection : require('marsdb').Collection;
 
 // Setup mars $collection provider
 angular.module('MarsDB', []).provider('$collection', function () {
+  var _angularCollectionDelegate = (0, _AngularCollectionDelegate.createCollectionDelegate)();
+  Collection.defaultDelegate(_angularCollectionDelegate);
+
+  this.defaultDelegate = function (delegate) {
+    Collection.defaultDelegate(delegate);
+    return this;
+  };
 
   this.defaultStorageManager = function (storageManager) {
     Collection.defaultStorageManager(storageManager);
@@ -245,10 +231,14 @@ angular.module('MarsDB', []).provider('$collection', function () {
     return function (name) {
       var options = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
 
+      // For using within delegate
+      options._$q = $q;
+
+      // Use cache or create new Colleciton
       if (collections[name] && !options.noCache) {
         return collections[name];
       } else {
-        var newInstance = new _AngularCollection2.default(name, options, $q);
+        var newInstance = new Collection(name, options);
         if (!options.noCache) {
           collections[name] = newInstance;
         }
@@ -259,7 +249,7 @@ angular.module('MarsDB', []).provider('$collection', function () {
 });
 
 module.export = 'MarsDB';
-},{"./AngularCollection":1,"angular":undefined,"marsdb":undefined}],4:[function(require,module,exports){
+},{"./AngularCollectionDelegate":1,"angular":undefined,"marsdb":undefined}],4:[function(require,module,exports){
 module.exports = require('./dist/index');
 
 },{"./dist/index":3}]},{},[4]);

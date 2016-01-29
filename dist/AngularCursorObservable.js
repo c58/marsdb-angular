@@ -19,12 +19,18 @@ var CursorObservable = typeof window !== 'undefined' && window.Mars ? window.Mar
 var AngularCursorObservable = exports.AngularCursorObservable = (function (_CursorObservable) {
   _inherits(AngularCursorObservable, _CursorObservable);
 
-  function AngularCursorObservable(db, query) {
+  function AngularCursorObservable($q) {
+    var _Object$getPrototypeO;
+
     _classCallCheck(this, AngularCursorObservable);
 
-    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AngularCursorObservable).call(this, db._collection, query));
+    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
 
-    _this.$q = db.$q;
+    var _this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(AngularCursorObservable)).call.apply(_Object$getPrototypeO, [this].concat(args)));
+
+    _this.$q = $q;
     return _this;
   }
 
@@ -41,10 +47,8 @@ var AngularCursorObservable = exports.AngularCursorObservable = (function (_Curs
   _createClass(AngularCursorObservable, [{
     key: 'destroy',
     value: function destroy(cursor) {
-      if (cursor && cursor._prevStopper) {
-        cursor._prevStopper.stop();
-      }
-      return this;
+      console.warn('DEPRECATED: `destroy` of cursor is deprecated! use `stopObservers` instead');
+      return this.stopObservers();
     }
 
     /**
@@ -67,42 +71,29 @@ var AngularCursorObservable = exports.AngularCursorObservable = (function (_Curs
           stopper.stop();
         });
       }
-
-      this._prevStopper = stopper;
       return stopper;
     }
   }, {
-    key: 'exec',
-    value: function exec() {
+    key: '_doUpdate',
+    value: function _doUpdate() {
       var _get2;
 
-      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
+      for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        args[_key2] = arguments[_key2];
       }
 
-      return this.$q.resolve((_get2 = _get(Object.getPrototypeOf(AngularCursorObservable.prototype), 'exec', this)).call.apply(_get2, [this].concat(args)));
+      return this.$q.resolve((_get2 = _get(Object.getPrototypeOf(AngularCursorObservable.prototype), '_doUpdate', this)).call.apply(_get2, [this].concat(args)));
     }
   }, {
     key: 'then',
     value: function then() {
       var _get3;
 
-      for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-        args[_key2] = arguments[_key2];
-      }
-
-      return this.$q.resolve((_get3 = _get(Object.getPrototypeOf(AngularCursorObservable.prototype), 'then', this)).call.apply(_get3, [this].concat(args)));
-    }
-  }, {
-    key: 'update',
-    value: function update() {
-      var _get4;
-
       for (var _len3 = arguments.length, args = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
         args[_key3] = arguments[_key3];
       }
 
-      return this.$q.resolve((_get4 = _get(Object.getPrototypeOf(AngularCursorObservable.prototype), 'update', this)).call.apply(_get4, [this].concat(args)));
+      return this.$q.resolve((_get3 = _get(Object.getPrototypeOf(AngularCursorObservable.prototype), 'then', this)).call.apply(_get3, [this].concat(args)));
     }
   }]);
 
