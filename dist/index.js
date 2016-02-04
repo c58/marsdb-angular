@@ -2,13 +2,15 @@
 
 var _AngularCollectionDelegate = require('./AngularCollectionDelegate');
 
+var _AngularCursorObservable = require('./AngularCursorObservable');
+
 var angular = typeof window !== 'undefined' && window.angular ? window.angular : require('angular');
 var Collection = typeof window !== 'undefined' && window.Mars ? window.Mars.Collection : require('marsdb').Collection;
 
 // Setup mars $collection provider
 angular.module('MarsDB', []).provider('$collection', function () {
-  var _angularCollectionDelegate = (0, _AngularCollectionDelegate.createCollectionDelegate)();
-  Collection.defaultDelegate(_angularCollectionDelegate);
+  Collection.defaultDelegate((0, _AngularCollectionDelegate.createCollectionDelegate)());
+  Collection.defaultCursor((0, _AngularCursorObservable.createCursor)());
 
   this.defaultDelegate = function (delegate) {
     Collection.defaultDelegate(delegate);
