@@ -1,6 +1,6 @@
 'use strict';
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
@@ -25,7 +25,7 @@ var Collection = typeof window !== 'undefined' && window.Mars ? window.Mars.Coll
 function createCursor() {
   var _defaultCursor = Collection.defaultCursor();
 
-  var AngularCursorObservable = function (_defaultCursor2) {
+  var AngularCursorObservable = (function (_defaultCursor2) {
     _inherits(AngularCursorObservable, _defaultCursor2);
 
     function AngularCursorObservable() {
@@ -96,7 +96,7 @@ function createCursor() {
     }]);
 
     return AngularCursorObservable;
-  }(_defaultCursor);
+  })(_defaultCursor);
 
   return AngularCursorObservable;
 }

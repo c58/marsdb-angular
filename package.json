@@ -25,11 +25,11 @@
   },
   "dependencies": {
     "invariant": "^2.2.0",
-    "marsdb": "^0.5.18"
+    "marsdb": "^0.5.22"
   },
   "devDependencies": {
-    "angular": "^1.4.9",
-    "angular-mocks": "^1.4.9",
+    "angular": "1.4.9",
+    "angular-mocks": "1.4.9",
     "babel-cli": "^6.3.17",
     "babel-eslint": "^5.0.0-beta6",
     "babel-preset-es2015": "^6.3.13",
