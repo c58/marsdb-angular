@@ -1,6 +1,6 @@
 {
   "name": "marsdb-angular",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "author": "Artem Artemev <art@studytime.me>",
   "contributors": [
     "Artem Artemev"
@@ -24,10 +24,13 @@
     "url": "git+ssh://git@github.com/c58/marsdb-angular.git"
   },
   "dependencies": {
-    "invariant": "^2.2.0",
-    "marsdb": "^0.5.18"
+    "invariant": "^2.2.0"
+  },
+  "peerDependencies": {
+    "marsdb": "0.6.x"
   },
   "devDependencies": {
+    "marsdb": "^0.6.0",
     "angular": "^1.4.9",
     "angular-mocks": "^1.4.9",
     "babel-cli": "^6.3.17",
