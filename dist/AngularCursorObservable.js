@@ -93,6 +93,17 @@ function createCursor() {
 
         return this.options._$q.resolve((_get3 = _get(Object.getPrototypeOf(AngularCursorObservable.prototype), 'then', this)).call.apply(_get3, [this].concat(args)));
       }
+    }, {
+      key: 'exec',
+      value: function exec() {
+        var _get4;
+
+        for (var _len3 = arguments.length, args = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+          args[_key3] = arguments[_key3];
+        }
+
+        return this.options._$q.resolve((_get4 = _get(Object.getPrototypeOf(AngularCursorObservable.prototype), 'exec', this)).call.apply(_get4, [this].concat(args)));
+      }
     }]);
 
     return AngularCursorObservable;
